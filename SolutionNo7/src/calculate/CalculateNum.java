@@ -26,6 +26,7 @@ public class CalculateNum {
 				primes.add((long)i);
 			}
 		}
+
 		System.out.println("All the prime numbers upto the position are "+primes.toString());
 		System.out.println("The prime no at position given is " + primes.get(position-1));
 
