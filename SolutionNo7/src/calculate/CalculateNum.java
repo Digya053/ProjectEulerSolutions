@@ -1,35 +1,38 @@
 package calculate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalculateNum {
-	private String prime ="2";
-	private int count =1;
+	private List<Long> primes;
+
+	public CalculateNum(){
+		primes = new ArrayList<Long>();
+		primes.add(2L);
+	}
 
 	public void calculatePrime(long n, int position){
-		boolean number = true;
-
 		for(int i=3; i<n;i+=2){
-			for(int j =3; j<n; j++){
-				if(i!=j){
-					if(i%j==0){
-						number =false;
-						break;
-					}
-					else{
-						prime +=" " +i;
-						count++;
-						if(count == position){
-							System.out.println("The prime number at position "+position+" is "+prime.length());
-						}
-						break;
-					}
-
+			boolean number = true;
+			for(int j =3; j<i; j++){
+				if(i%j==0){
+					number =false;
+					break;
 				}
+
+			}
+
+			if(number == true){
+				primes.add((long)i);
 			}
 		}
-		System.out.println("All the prime numbers upto the position are "+prime);
-		System.out.println("The count is "+count);
+		System.out.println("All the prime numbers upto the position are "+primes.toString());
+		System.out.println("The prime no at position given is " + primes.get(position-1));
+
 	}
 
 }
+
+
 
 
