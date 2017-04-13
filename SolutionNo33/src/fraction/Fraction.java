@@ -8,43 +8,60 @@ import utils.Maths;
 
 public class Fraction {
 
-	public void generateFraction(){
-		Maths maths = new Maths();
+	public void getFraction(){
+		double newNumerator = 0;
+		double newDenominator = 0;
+		double dividedFirstValue = 0;
+		double dividedSecondValue = 0;
+		//double EPSILON = 0.00001;
 		List<Integer> denominatorList = new ArrayList<>();
-		double fractionDivision = 0;
-		double differentDigitFractionDivision = 0;
-		for(double numerator = 10; numerator <= 12; numerator++){
-			//for(double denominator = 10; denominator <= 12; denominator++){
-				//fractionDivision = numerator/denominator;
-				//System.out.println("numerator is " + numerator + "  " + "denominator is " +  denominator + " " + "fractionDivision is " +  fractionDivision);
-				List<Integer> numeratorDigits = maths.convertNumberToDigit(numerator);
-				System.out.println("numeratorDigits is " + numeratorDigits);
-				//List<Integer> denominatorDigits = Maths.convertNumberToDigit(denominator);
-				//System.out.println("denominator digits is " + denominatorDigits);
+		for(int numerator = 10; numerator <= 20; numerator++){
+			for(int denominator = 10; denominator <= 20; denominator++){
+				List<Integer> numeratorDigits = null;
+				List<Integer> denominatorDigits = null;
+				dividedFirstValue = (double)numerator/ (double)denominator;
+				numeratorDigits = Maths.getDigitsFromNumber(numerator);
+				System.out.println("numDigits are " + numeratorDigits);
+				denominatorDigits = Maths.getDigitsFromNumber(denominator);
+				System.out.println("denominator digits are " + denominatorDigits);
 
+				System.out.println("comparision is " + Compare.lists(numeratorDigits, denominatorDigits));
+				if(!Compare.lists(numeratorDigits, denominatorDigits).equals(null)){
+					if(Compare.lists(numeratorDigits, denominatorDigits).equals("FirstDigitEqual")){
+						newNumerator = (double) numeratorDigits.get(1);
+						newDenominator = (double) denominatorDigits.get(1);
+						dividedSecondValue = newNumerator/newDenominator;
 
-			/*	if(Compare.Lists(numeratorDigits, denominatorDigits)){
-					double numeratorDifferentDigit = numeratorDigits.get(1);
-					double denominatorDifferentDigit = denominatorDigits.get(1);
-					System.out.println("numeratorDifferentDigit is " + numeratorDifferentDigit);
-					System.out.println("denominatorDifferentdigit is " + denominatorDifferentDigit);
-					differentDigitFractionDivision = numeratorDifferentDigit/ denominatorDifferentDigit;
-					System.out.println("fractionDivision is " + fractionDivision + "    " + "differentDigitFractionDivision is " + differentDigitFractionDivision);
-					if(Compare.division(fractionDivision, differentDigitFractionDivision) == true){
-						denominatorList.add((int)denominator);
-						//System.out.println("denominator " + denominator + "numerator " + numerator + 
-								//"denominatorList " + denominatorList);
-					}*/
-					//System.out.println("======================================================");
-					//System.out.println(numeratorDifferentDigit + " " + denominatorDifferentDigit + " " + " " +differentDigitFractionDivision);
+					} else if(Compare.lists(numeratorDigits, denominatorDigits).equals("SecondDigitEqual")){
+						newNumerator = (double) numeratorDigits.get(0);
+						newDenominator = (double) numeratorDigits.get(0);
+						dividedSecondValue = newNumerator/newDenominator;
+					}
+					System.out.println("newNumerator is " + newNumerator);
+					System.out.println("newDenominator is " + newDenominator);
+					
+					System.out.println("dividedFirstValue is " + dividedFirstValue);
+					System.out.println("dividedSecondValue is " + dividedSecondValue);
+				}
+				/*if(dividedFirstValue == dividedSecondValue){
+					denominatorList.add(denominator);
+				}*/
+				else{
+				dividedSecondValue = 0;
+				}
+				if(Double.compare(dividedFirstValue, dividedSecondValue) == 0){
+					System.out.println("inside if dividedFirstValue " + dividedFirstValue);
+					System.out.println("inside if dividedSecondValue " + dividedSecondValue);
+					denominatorList.add(denominator);
 				}
 
-
-
-
+				/*if (Math.abs(dividedFirstValue - dividedSecondValue) < EPSILON){
+					denominatorList.add(denominator);
+				}*/
 			}
 		}
-		//System.out.println(denominatorList);
-	//}
+		System.out.println("denominator list is " + denominatorList);
 
-//}
+	}
+
+}
