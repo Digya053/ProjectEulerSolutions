@@ -17,7 +17,6 @@ public class PandigitalPrime {
 				}
 			}
 		}
-
 		return pandigitalPrimes;
 	}
 
