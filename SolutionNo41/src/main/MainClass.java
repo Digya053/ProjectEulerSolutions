@@ -15,6 +15,10 @@ public class MainClass {
 		System.out.println(pandigitalPrimes);
 		
 		System.out.println("The maximum pandigital prime is " + Maths.max(pandigitalPrimes));
+
+import pandigital.Pandigital;
+import utils.Maths;
+
 	}
 
 }
